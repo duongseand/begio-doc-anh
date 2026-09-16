@@ -35,7 +35,7 @@ export default async (req) => {
     cauHoi = String(body?.cau_hoi || "").slice(0, 300);
   } catch {}
 
-  const store = getStore("anh-khach");
+  const store = getStore({ name: "anh-khach", consistency: "strong" });
   let rec = await store.get(convId, { type: "json" });
   if (!rec) { // phòng khi webhook tới chậm hơn tool vài giây
     await sleep(2500);

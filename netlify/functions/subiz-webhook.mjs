@@ -34,7 +34,7 @@ export default async (req) => {
   if (!body) return new Response("ok");
 
   const messages = findMessages(body);
-  const store = getStore("anh-khach");
+  const store = getStore({ name: "anh-khach", consistency: "strong" });
   const seen = new Set();
   let saved = 0;
 
